@@ -1,6 +1,8 @@
 /* Asociamos función canvasApp a carga de página */
 window.addEventListener('load', canvasApp, false);	
 
+var radio = 7;
+
 function canvasApp(){  
     /* Inicializamos el canvas */
 	var theCanvas = document.getElementById('canvas');
@@ -57,6 +59,16 @@ function canvasApp(){
     function mouse_released(ev) {
 	  begin_drawing = false;
     }
+    
+    $("#mas").click(function() {
+        radio ++;
+        console.log(radio);
+    });
+    
+    $("#menos").click(function() {
+        radio --;
+        console.log(radio);
+    });
 
     function mouse_moved(ev) {
 	  var x, y;	
@@ -66,7 +78,7 @@ function canvasApp(){
 
 	  if (begin_drawing) {
 	    context.beginPath();
-	    context.arc(x, y, 7, (Math.PI/180)*0, (Math.PI/180)*360, false);
+	    context.arc(x, y, radio, (Math.PI/180)*0, (Math.PI/180)*360, false);
 	    context.fill();
         context.closePath();
 	  }
